@@ -1,24 +1,25 @@
-import { Button, Modal } from 'bootstrap';
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import { Button, Modal } from "react-bootstrap";
 
-const ReactModal = () => {
-    const [show, setShow] = useState(false);
+const ReactModal = (props) => {
+  //   console.log(props.product);
+  const { title, image, description } = props?.product || {};
+  const [show, setShow] = useState(false);
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-  
-    return (
-     
-            <>
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  return (
+    <>
       <Button variant="primary" onClick={handleShow}>
-        Launch demo modal
+        Details
       </Button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <img className="w-50" src={image} alt="" />
+          <Modal.Title>{title}</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+        <Modal.Body>{description}</Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
@@ -28,9 +29,8 @@ const ReactModal = () => {
           </Button>
         </Modal.Footer>
       </Modal>
-      </>
+    </>
   );
-
 };
 
 export default ReactModal;
