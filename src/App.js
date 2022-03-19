@@ -6,10 +6,14 @@ import Menubar from './Components/Menubar/Menubar';
 
 function App() {
   const [count, setCount]=useState(0)
+
+  const setCart = ()=>{
+   setCount(count+1)
+  }
   return (
     <div className="App">
-     <Menubar count={setCount(count)}></Menubar>
-     <Allproducts></Allproducts>
+     <Menubar count={count}></Menubar>
+     <Allproducts setCart={setCart}></Allproducts>
     </div>
   );
 }
